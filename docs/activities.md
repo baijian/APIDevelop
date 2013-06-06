@@ -29,9 +29,9 @@ X-Signature: The signature of this request
 >    GET /activities/beijing
 >```
 
-* 返回893423之后的活动列表
+* 返回time stamp:893423之后的活动列表第二页,单页20
 >```
->    GET /brokers/beijing?last_timestamp=893423
+>    GET /brokers/beijing?last_timestamp=893423&page=2&page_size=20
 >```
 
 ### Response:
