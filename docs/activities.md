@@ -1,4 +1,4 @@
-## 此接口返回活动
+## 返回活动接口
 
 GET /activities/:city_name
 
@@ -11,7 +11,7 @@ X-Signature: The signature of this request
 * **city_name**: 
 * optional:
 * **last_timestamp**: 上次成功获取活动时间
-* `` -  default
+* `0` -  default
 * `893423` - ...
 * optonal:
 * **page**: 页数
@@ -36,7 +36,6 @@ X-Signature: The signature of this request
 ### Response:
 ```
 Status: 200 OK
-X-Foo: bar
 ```
 HTTP Status Code 表示运行结果
 ```json
