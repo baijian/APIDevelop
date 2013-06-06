@@ -1,6 +1,8 @@
 ## 返回活动接口
 
+```
 GET /activities/:city_name
+```
 
 ### Header
 ```
@@ -8,18 +10,17 @@ X-API-Key: The identification of the client app
 X-Signature: The signature of this request
 ```
 ### Paramaters:
-* **city_name**: 
-* optional:
-* **last_timestamp**: 上次成功获取活动时间
-* `0` -  default
-* `893423` - ...
-* optonal:
-* **page**: 页数
-* `1` - default 页码
-* `2` - ...
-* **page_size**: 单页大小
-* `10` - default
-* `20` - ...
+    * **city_name**: 
+    * optional:
+        * **last_timestamp**: 上次成功获取活动时间
+            * `0` -  default
+            * `893423` - ...
+        * **page**: 页数
+            * `1` - default 页码
+            * `2` - ...
+        * **page_size**: 单页大小
+            * `10` - default
+            * `20` - ...
 
 #### Example: 
 
