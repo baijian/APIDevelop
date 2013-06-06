@@ -1,4 +1,4 @@
-## 返回活动接口
+## 返回近期活动接口
 
 ```
 GET /activities/:city_name
@@ -12,26 +12,23 @@ X-Signature: The signature of this request
 ### Paramaters:
 * **city_name**: 
 * optional:
-    * **last_timestamp**: 上次成功获取活动时间
+    * **last_id**: 上次请求活动列表id最大值
         * `0` -  default
-        * `893423` - ...
-    * **page**: 页数
-        * `1` - default 页码
-        * `2` - ...
-    * **page_size**: 单页大小
-        * `10` - default
-        * `20` - ...
+        * `323` - ...
+    * **period**: 近期时间段
+        * `30` - 30天(1个月) default
+        * `60` - 60天(2个月)
 
 #### Example: 
 
-* 返回北京的活动列表
+* 返回近一个月北京的活动列表数据
 >```
 >    GET /activities/beijing
 >```
 
-* 返回time stamp:893423之后的活动列表第二页,单页20
+* 返回id大于323且最近28天的活动列表数据
 >```
->    GET /brokers/beijing?last_timestamp=893423&page=2&page_size=20
+>    GET /brokers/beijing?last_id=323&period=28
 >```
 
 ### Response:
@@ -41,11 +38,10 @@ Status: 200 OK
 HTTP Status Code 表示运行结果
 ```json
 {
-"id" : "12",
-"timestamp":"1370521017",
 "activities" : [
         {
-            "weight":92,
+            "id" : 324,
+            "weight" : 92,
             "title":"活动标题",
             "url":"http://www.urbanmonkey.cn/",
             "tags":[
@@ -59,6 +55,7 @@ HTTP Status Code 表示运行结果
             "end_time":"30:00"
         },
         {
+            "id" : 325,
             "weight":92,
             "title":"活动标题2",
             "url":"http://www.urbanmonkey.cn/",
