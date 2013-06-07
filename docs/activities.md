@@ -37,38 +37,36 @@ Status: 200 OK
 ```
 HTTP Status Code 表示运行结果
 ```json
-{
-"activities" : [
-        {
-            "id" : 324,
-            "weight" : 92,
-            "title":"活动标题",
-            "url":"http://www.urbanmonkey.cn/",
-            "tags":[
-                "人文"
-                ],
-            "content":"活动内容",
-            "source":"来源网站",
-            "location":"北京科技馆",
-            "start_date":"2013-04-17",
-            "start_time":"00:00",
-            "end_time":"30:00"
-        },
-        {
-            "id" : 325,
-            "weight":92,
-            "title":"活动标题2",
-            "url":"http://www.urbanmonkey.cn/",
-            "tags":[
-                "人文"
-                ],
-            "content":"活动内容",
-            "source":"来源网站",
-            "location":"北京科技馆",
-            "start_date":"2013-04-17",
-            "start_time":"00:00",
-            "end_time":"30:00"
-        }
-    ]
-}
+[
+    {
+        "id" : 324,
+        "weight" : 92,
+        "title":"活动标题",
+        "url":"http://www.urbanmonkey.cn/",
+        "tags":[
+            "人文"
+            ],
+        "content":"活动内容",
+        "source":"来源网站",
+        "location":"北京科技馆",
+        "start_date":"2013-04-17",
+        "start_time":"00:00",
+        "end_time":"30:00"
+    },
+    {
+        "id" : 325,
+        "weight":92,
+        "title":"活动标题2",
+        "url":"http://www.urbanmonkey.cn/",
+        "tags":[
+            "人文"
+            ],
+        "content":"活动内容",
+        "source":"来源网站",
+        "location":"北京科技馆",
+        "start_date":"2013-04-17",
+        "start_time":"00:00",
+        "end_time":"30:00"
+    }
+]
 ```
