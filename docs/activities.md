@@ -28,7 +28,7 @@ X-Signature: The signature of this request
 
 * 返回id大于323且最近28天的活动列表数据
 >```
->    GET /brokers/beijing?last_id=323&period=28
+>    GET /activities/beijing?last_id=323&period=28
 >```
 
 ### Response:
