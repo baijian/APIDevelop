@@ -8,7 +8,17 @@ X-Signature: The signature of this request
 ```
 
 ### Response:
+HTTP Status Code Represent the result 
+
 ```
 Status: 200 OK
+Status: 201 Created
 ```
-HTTP Status Code Represent the result 
+
+#### Client Errors:
+* 1.If sending invalid JSON
+HTTP/1.1 400 Bad Request
+
+{"msg":"Invalid json"}
+
+
