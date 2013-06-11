@@ -75,13 +75,20 @@ PUT /activities/:activity_id/reaction/:device_id
 
 * **activity_id**: 活动id
 * **device_id**: 设备id
-* optional:
-    * **like**: if like
-        * `0` - dislike 
-        * `1` - like
-    * **clicked**: 
-        * `0` - ... default
-        * `1` - ... 
+
+#### Input
+* **like**: if like
+    * `0` - dislike 
+    * `1` - like
+* **clicked**: 
+    * `0` - ... default
+    * `1` - ... 
+```json
+{
+    "like" : "1",
+    "clicked" : "1"
+}
+```
 
 #### Example: 
 
