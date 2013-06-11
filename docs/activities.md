@@ -9,7 +9,7 @@ Activities API
 ```
 GET /activities/:city_name
 ```
-### Paramaters:
+#### Paramaters:
 * **city_name**: 
 * optional:
     * **last_id**: 上次请求活动列表id最大值
@@ -67,18 +67,19 @@ GET /activities/:city_name
 ```
 
 <h3 id="reaction">Reaction</h3>
+```
+PUT /activities/:activity_id/reaction/:device_id
+```
 
-```
-POST /activities/:activity_id/reaction/:device_id
-```
-### Paramaters:
-* **activity_id**: 
-* **device_id**:
+#### Paramaters:
+
+* **activity_id**: 活动id
+* **device_id**: 设备id
 * optional:
     * **like**: if like
         * `0` - dislike 
         * `1` - like
-    * **clicked**: 近期时间段
+    * **clicked**: 
         * `0` - ... default
         * `1` - ... 
 
@@ -86,7 +87,7 @@ POST /activities/:activity_id/reaction/:device_id
 
 * 设备4325439对活动1234的reaction
 >```
->    POST /activities/1234/reaction/4325439
+>    PUT /activities/1234/reaction/4325439
 >```
 >```json
     {
@@ -95,14 +96,19 @@ POST /activities/:activity_id/reaction/:device_id
     }
 >```
 
-```json
-
-```
-
 <h3 id="add">Add</h3>
 ```
 POST  /activities/:city_name
 ```
-### Paramaters:
+#### Paramaters:
 * **city_name**: beijing shanghai and so on
 
+#### Input:
+* **titile**: activity name
+* **url**: activity url
+
+```json
+    {
+        "" : ""
+    }
+```
