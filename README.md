@@ -17,8 +17,9 @@ Status: 201 Created
 
 #### Client Errors:
 * 1.If sending invalid JSON
-HTTP/1.1 400 Bad Request
 
-{"msg":"Invalid json"}
+    HTTP/1.1 400 Bad Request
+
+    {"msg":"Invalid json"}
 
 
