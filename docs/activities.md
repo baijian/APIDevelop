@@ -83,6 +83,7 @@ PUT /activities/:activity_id/reaction/:device_id
 * **clicked**: 
     * `0` - ... default
     * `1` - ... 
+
 ```json
 {
     "like" : "1",
