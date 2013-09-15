@@ -1,15 +1,27 @@
-How to Design API
+How to Design Pragmatic RESTfull API
 =======
+
+[Representational State Transfer](http://en.wikipedia.org/wiki/REST)
 
 An API is a developer's UI.
 
 Nowadays, RESTful API is very popular,it is proposed by Roy T.Fielding,
 as we all know *HTTP* is a typical design which using restful style.
 
+Pragmatic RESTful API means maxinmize developer productivity and success 
+as the primary design principle.
+
 * [RESTful API](#rest)
 
-* [APIDocDemo](#doc)
+* [SSL or Sign](#ssl)
 
+* [API Doc](#doc)
+
+* [API Version](#version)
+
+* [Data Compression](#compress)
+
+* [HTTP Status Codes](#codes)
 
 <h3 id="rest">RESTful API</h3>
 
@@ -49,7 +61,7 @@ RESTfull API的核心概念就是将API抽象成逻辑资源,然后充分利用H
 * DELETE /users/12/books/2 -- 删除id为12的用户的一本id为2的书
 
 实际上有时会碰到非CRUD之类的操作,比如对Github的gist进行加星操作.
-把星抽象成这个资源的一部分的话,这个操作就有点像对一个布尔值activated
+把星抽象成这个资源的一部分的话,这个操作就有点像对一个布尔类型
 进行是非操作一样,可以用方法*PATCH*这个资源来实现这种操作.
 
 或者Github的做法是把它理解为子资源,也不失为一个很好的方法:
@@ -62,7 +74,23 @@ RESTfull API的核心概念就是将API抽象成逻辑资源,然后充分利用H
 不好将它附到任何一个资源上,在这种情况下,就给**/search** 这样得URL就行了,
 尽管它不是名字,没有关系,文档清晰不混淆就行.
 
-<h3 id="doc">APIDocDemo</h3>
+<h3 id="ssl">SSL or Sign</h3>
+
+Ofcourse SSL is most secure, using SSL can guarante encrypted communications
+without complex authentication efforts, you can get away with simple access
+tokens instead of having to sign sign each API request.
+
+<h3 id="doc">API Doc</h3>
+
+API docs should be easy to find and publically accessible. The docs should 
+show examples of complete request/response cycles. Preferably, the requests
+should be portable examples - either links that can be pasted into a browser
+or curl examples that can be pasted into a terminal.Once release a public API
+you should not modify things without notice.The doc must include any updates of
+the API, you may delivered it via changelog and so on.Recently, I use *gollum* to
+write my API documents, it is a wiki based on *git*, I think it is good, maybe you
+can create your own API doc system based on it.
+
 ### Header
 ```
 X-API-Key: The identification of the client app
@@ -84,4 +112,53 @@ Status: 201 Created
 
     {"msg":"Invalid json"}
 
+
+<h3 id="version">API Version</h3>
+
+Academically speaking, your API version info should be in a HTTP header.
+However, the version need to be in the URL to ensure broser explorability of 
+the resources across versions.
+
+<h3 id="compress">Data Compression</h3>
+
+MessagePack is an efficient binary serialization format. It lets you exchange data
+among multiple languages like JSON. But is's faster and smaller. Small integers are
+encoded into a single byte, and typical strings require only one extra byte in 
+additions to the strings themselves.
+
+**PHP Requirement**
+
+* PHP 5.0 +
+
+$ phpbrew ext install msgpack 0.5.5
+
+or 
+
+$ pecl install msgpack
+
+**Code Example**
+
+```php
+<?php
+$data = array(
+    "a" => 1,
+    "b" => 2,
+);
+$msg = msgpack_pack($data);
+$data = msgpack_unpack($msg);
+```
+
+<h3 id="codes">HTTP Status Codes</h3>
+
+You'd better use HTTP response codes to indicate API errors.
+In general, codes in the 2xx range indicate success, codes in
+the 4xx range indicate an error that resulted from the provided
+information, and codes in the 5xx range indicate an error with 
+servers.
+
+**Some Examples**
+
+* 200 OK -- Response to a successful *GET* *PUT* *PATCH* or *DELETE*.
+
+* 201 Created -- Response to a *POST* that results in a creation.
 
