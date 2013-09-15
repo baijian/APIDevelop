@@ -11,19 +11,19 @@ as we all know *HTTP* is a typical design which using restful style.
 Pragmatic RESTful API means maxinmize developer productivity and success 
 as the primary design principle.
 
-* [RESTful API](#rest)
+* [RESTful API](#restful-api)
 
-* [SSL or Sign](#ssl)
+* [SSL or Sign](#ssl-or-sign)
 
-* [API Doc](#doc)
+* [API Doc](#api-doc)
 
-* [API Version](#version)
+* [API Version](#api-version)
 
-* [Data Compression](#compress)
+* [Data Compression](#data-compression)
 
-* [HTTP Status Codes](#codes)
+* [HTTP Status Codes](#http-status-codes)
 
-<h3 id="rest">RESTful API</h3>
+### RESTful API
 
 RESTfull API的核心概念就是将API抽象成逻辑资源,然后充分利用HTTP的方法对这些资源
 进行操作.HTTP协议里主要有*GET* *POST* *PUT* *PATCH* *DELETE*这几个主要方法.
@@ -74,13 +74,13 @@ RESTfull API的核心概念就是将API抽象成逻辑资源,然后充分利用H
 不好将它附到任何一个资源上,在这种情况下,就给**/search** 这样得URL就行了,
 尽管它不是名字,没有关系,文档清晰不混淆就行.
 
-<h3 id="ssl">SSL or Sign</h3>
+### SSL or Sign
 
 Ofcourse SSL is most secure, using SSL can guarante encrypted communications
 without complex authentication efforts, you can get away with simple access
 tokens instead of having to sign sign each API request.
 
-<h3 id="doc">API Doc</h3>
+### API Doc
 
 API docs should be easy to find and publically accessible. The docs should 
 show examples of complete request/response cycles. Preferably, the requests
@@ -91,13 +91,13 @@ the API, you may delivered it via changelog and so on.Recently, I use *gollum* t
 write my API documents, it is a wiki based on *git*, I think it is good, maybe you
 can create your own API doc system based on it.
 
-### Header
+#### Header
 ```
 X-API-Key: The identification of the client app
 X-Signature: The signature of this request
 ```
 
-### Response:
+#### Response:
 HTTP Status Code Represent the result 
 
 ```
@@ -113,7 +113,7 @@ Status: 201 Created
     {"msg":"Invalid json"}
 
 
-<h3 id="version">API Version</h3>
+### API Version
 
 Academically speaking, your API version info should be in a HTTP header.
 However, the version need to be in the URL to ensure broser explorability of 
@@ -148,7 +148,7 @@ $msg = msgpack_pack($data);
 $data = msgpack_unpack($msg);
 ```
 
-<h3 id="codes">HTTP Status Codes</h3>
+### HTTP Status Codes
 
 You'd better use HTTP response codes to indicate API errors.
 In general, codes in the 2xx range indicate success, codes in
