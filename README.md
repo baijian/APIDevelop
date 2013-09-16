@@ -21,6 +21,8 @@ as the primary design principle.
 
 * [Data Compression](#data-compression)
 
+* [Data Encryption](#data-encryption)
+
 * [HTTP Status Codes](#http-status-codes)
 
 * [API-Response](#api-response)
@@ -150,6 +152,25 @@ $data = array(
 );
 $msg = msgpack_pack($data);
 $data = msgpack_unpack($msg);
+```
+
+### Data Encryption
+
+**DES**
+
+```php
+private function encrypt($string, $key) {
+    $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_DES, MCRYPT_MODE_ECB), MCRYPT_RAND);
+    $str = mcrypt_encrypt(MCRYPT_DES, $key, $string, MCRYPT_MODE_ECB, $iv);
+    return base64_encode($str);
+}
+private function decrypt($str, $key) {
+    $string = base64_decode($str);
+    $cipher = MCRYPT_DES;
+    $modes = MCRYPT_MODE_ECB;
+    $iv = mcrypt_create_iv(mcrypt_get_iv_size($cipher, $modes), MCRYPT_RAND);
+    return mcrypt_decrypt($cipher, $key, $string, $modes, $iv);
+}
 ```
 
 ### HTTP Status Codes
