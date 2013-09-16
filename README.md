@@ -25,6 +25,8 @@ as the primary design principle.
 
 * [API-Response](#api-response)
 
+* [JSONP-Support](#jsonp-support)
+
 ### RESTful API
 
 RESTfull API的核心概念就是将API抽象成逻辑资源,然后充分利用HTTP的方法对这些资源
@@ -207,3 +209,28 @@ With some json message in your response body is good.
     ]
 }
 ```
+
+### JSONP-Support
+
+[JSONP](http://en.wikipedia.org/wiki/JSONP) is a communication technique used in Javascript programs.
+
+**json result**
+
+```json
+{
+    "name": "Foo",
+    "id": 1234,
+    "age": 22
+}
+```
+
+**jsonp result**
+
+    functionCall({"name":"Foo","id": 1234, "age": 22});
+
+```javascript
+<script type="application/javascript" src="http://api.xxx.com/user/1234?callback=functionCall">
+</script>
+```
+
+Then you should have registered functionCall function in  your javascript.
