@@ -195,12 +195,12 @@ With some json message in your response body is good.
     "message": "Validation Failed",
     "errors" : [
         {
-            "code":1
+            "code":1,
             "field": "name",
             "message": "the begging work is not allowed!"
         },
         {
-            "code":2
+            "code":2,
             "field": "password",
             "message": "you should input something!"
         }
