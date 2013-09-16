@@ -23,6 +23,8 @@ as the primary design principle.
 
 * [HTTP Status Codes](#http-status-codes)
 
+* [API-Response](#api-response)
+
 ### RESTful API
 
 RESTfull API的核心概念就是将API抽象成逻辑资源,然后充分利用HTTP的方法对这些资源
@@ -150,7 +152,8 @@ $data = msgpack_unpack($msg);
 
 ### HTTP Status Codes
 
-You'd better use HTTP response codes to indicate API errors.
+Since HTTP defines a bunch of meaningful status code, so we can use them to indicate our
+API errors.
 In general, codes in the 2xx range indicate success, codes in
 the 4xx range indicate an error that resulted from the provided
 information, and codes in the 5xx range indicate an error with 
@@ -162,3 +165,45 @@ servers.
 
 * 201 Created -- Response to a *POST* that results in a creation.
 
+### API Response
+
+In general, API have two type response, ok or not ok, if response is ok, you HTTP response
+code is 2xx, and the response body content is the resources you request for; if response is not
+ok, your HTTP response code maybe 4xx or 5xx, remember you should custom your response error
+body. It should have a code and some messages or description of the error.
+
+**Ok response body**
+
+Just some request resources.
+
+```json
+{
+    "data":[
+        {"a":"fda","b":"fdas"},
+        {"a":"fo","b":"xx"}
+    ]
+}
+```
+
+**Not ok response body**
+
+With some json message in your response body is good.
+
+```json
+{
+    "code": 123,
+    "message": "Validation Failed",
+    "errors" : [
+        {
+            "code":1
+            "field": "name",
+            "message": "the begging work is not allowed!"
+        },
+        {
+            "code":2
+            "field": "password",
+            "message": "you should input something!"
+        }
+    ]
+}
+```
