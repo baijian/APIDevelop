@@ -52,8 +52,8 @@ class DESUtils {
     }
 
     public function pkcs7_pad ($content, $blocksize) {
-        $pad = $block - (strlen($content) % $blocksize);
-        if ($pad <= $block) {
+        $pad = $blocksize - (strlen($content) % $blocksize);
+        if ($pad <= $blocksize) {
             $char = chr($pad);
             $content .= str_repeat($char, $pad);
         }
