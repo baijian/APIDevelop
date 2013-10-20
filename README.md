@@ -29,6 +29,8 @@ as the primary design principle.
 
 * [JSONP-Support](#jsonp-support)
 
+* [Data-Analysis](#data-analysis)
+
 ### RESTful API
 
 RESTfull API的核心概念就是将API抽象成逻辑资源,然后充分利用HTTP的方法对这些资源
@@ -255,3 +257,15 @@ With some json message in your response body is good.
 ```
 
 Then you should have registered functionCall function in  your javascript.
+
+### Data-analysis
+
+If you design your api use restfull architecture, you can analysis all data you want from your nginx access log.
+
+For examples:
+
+* Count register user count every day. 
+
+Ofcourse I use `storm` to analysis this requirements.
+
+* ....
