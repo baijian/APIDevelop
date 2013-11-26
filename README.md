@@ -19,7 +19,7 @@ as the primary design principle.
 
 * [API Version](#api-version)
 
-* [Data Compression](#data-compression)
+* [Data Transfer](#data-transfer)
 
 * [Data Encryption](#data-encryption)
 
@@ -127,7 +127,7 @@ Academically speaking, your API version info should be in a HTTP header.
 However, the version need to be in the URL to ensure broser explorability of 
 the resources across versions.
 
-<h3 id="compress">Data Compression</h3>
+<h3 id="transfer">Data Transfer</h3>
 
 MessagePack is an efficient binary serialization format. It lets you exchange data
 among multiple languages like JSON. But is's faster and smaller. Small integers are
