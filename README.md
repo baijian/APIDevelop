@@ -127,12 +127,24 @@ Academically speaking, your API version info should be in a HTTP header.
 However, the version need to be in the URL to ensure broser explorability of 
 the resources across versions.
 
-<h3 id="transfer">Data Transfer</h3>
+### Data Transfer
 
 MessagePack is an efficient binary serialization format. It lets you exchange data
 among multiple languages like JSON. But is's faster and smaller. Small integers are
 encoded into a single byte, and typical strings require only one extra byte in 
 additions to the strings themselves.
+
+See [spec](https://github.com/msgpack/msgpack/blob/master/spec.md)
+
+**MessagePack**包含两个概念,`type system`和`formats`.
+将数据序列化的过程就是利用`type system`将应用对象转换成`formats`(byte array),反序列化就是
+利用`type system`将数据从`formats`(byte array)转换成应用程序的对象.
+
+msgpack的数据传输格式是二进制流,所以不通语言用msgpack格式数据进修通信时要注意以
+二进制流的方式来进行数据的交换.
+msgpack相对于json而言确实数据量小了很多，但是由于msgpack的不可读性导致接口调试时会有
+些许的不方便，所以比较好的做法是同时支持两种格式，默认msgpack格式，通过(url后面加.json
+后缀)等方式来要求接口返回json格式这样调试时比较有可读性.
 
 **PHP Requirement**
 
