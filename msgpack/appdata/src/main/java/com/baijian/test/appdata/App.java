@@ -9,6 +9,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static org.msgpack.template.Templates.tList;
 import static org.msgpack.template.Templates.TString;
@@ -38,6 +40,16 @@ public class App
         int statusCode = con.getResponseCode();
         //System.out.println("ResponseCode: " + statusCode);
         InputStream inputStream = con.getInputStream();
+        /*
+        Map headers = con.getHeaderFields();
+        Set<String> keys = headers.keySet();
+        for( String key : keys ){
+            String val = con.getHeaderField(key);
+            System.out.println(key+"     "+val);
+        }
+        int length = con.getContentLength();
+        System.out.println("length: " + length);
+        */
         //int a = inputStream.read();
         byte[] data = new byte[1000];
         int chunk = inputStream.read(data);
